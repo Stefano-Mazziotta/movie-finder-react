@@ -1,0 +1,12 @@
+main .principal-header{
+    width: 100%;
+    padding: 20px 10px;
+    
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid grey;
+}
+
+main .principal-header h1{
+    font-size: 28px;
+}
