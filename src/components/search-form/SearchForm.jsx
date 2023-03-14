@@ -1,21 +1,58 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { searchMovies } from '../../services/searchMovies'
 import './styles.css'
 
-export function SearchForm(){
-    const [movieName, setMovieName] = useState('')
+export function SearchForm ({ updateMovies }) {
+  const [inputs, setInputs] = useState({})
+  const [isSubmit, setIsSubmit] = useState(false)
 
-    const searchMovie = (event) => {
-        event.preventDefault()
-        const formData = new FormData(event.target)
-        const dataKeyValue = [...formData.entries()]
-    }
+  useEffect(() => {
+    if (!isSubmit) return
 
-    return (
-        <section className="search-section">
-        <form onSubmit={searchMovie}>
-          <input className='form-input' type="text" placeholder='movie name' name='movieName'/>
-          <input className='form-btn' type="submit" value="🔎" />
-        </form>
-      </section>
-    )
+    searchMovies(inputs)
+      .then(data => {
+        const movies = data.Search
+        updateMovies(movies)
+        setIsSubmit(false)
+      })
+  }, [isSubmit])
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    setIsSubmit(true)
+  }
+
+  const handleChange = (event) => {
+    const input = event.target
+
+    const name = input.name
+    const value = input.value
+
+    setInputs(values => ({ ...values, [name]: value }))
+  }
+
+  return (
+    <section className='search-section'>
+      <form onSubmit={handleSubmit}>
+
+        <input
+          className='form-input'
+          type='text'
+          placeholder='Movie name'
+          name='movieName'
+          value={inputs.movieName || ''}
+          onChange={handleChange}
+        />
+
+        <input
+          className='form-btn'
+          type='submit'
+          value='🔎'
+        />
+
+      </form>
+
+      <p>{inputs.movieName || ''}</p>
+    </section>
+  )
 }
