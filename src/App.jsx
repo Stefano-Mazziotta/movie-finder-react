@@ -1,8 +1,9 @@
+import { useState } from 'react'
 import './styles.css'
 
 import { Header } from './components/header/Header'
 import { SearchForm } from './components/search-form/SearchForm'
-import { useState } from 'react'
+import { Movies } from './components/movies/Movies'
 
 function App () {
   const [movies, setMovies] = useState([])
@@ -12,15 +13,13 @@ function App () {
   }
 
   return (
-    <main>
+    <div className='page'>
       <Header />
 
       <SearchForm updateMovies={updateMovies} />
 
-      <section className='movies-section' />
-      {movies.length > 0 &&
-        <p style={{ width: '100vw' }}>{JSON.stringify(movies)}</p>}
-    </main>
+      <Movies movies={movies} />
+    </div>
   )
 }
 

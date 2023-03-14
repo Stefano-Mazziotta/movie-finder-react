@@ -5,15 +5,15 @@ Get the API Key on the website itself by registering the email.
 
 Requirements:
 
-☐ You need to show an input and a button to search for the movie.
+✅ You need to show an input and a button to search for the movie.
 
-☐ Make the form work.
+✅ Make the form work.
 
-☐ Fetch data to the API.
+✅ Fetch data to the API.
 
-☐ Lists the movies and shows the title, year and poster.
+✅ Lists the movies and shows the title, year and poster.
 
-☐ Make movies display in a responsive grid.
+✅ Make movies display in a responsive grid.
 
 
 First iteration:
