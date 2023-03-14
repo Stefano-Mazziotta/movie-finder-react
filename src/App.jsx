@@ -1,4 +1,7 @@
 import './styles.css'
+import { Header } from './components/header/Header'
+import { SearchForm } from './components/search-form/SearchForm'
+
 
 function App() {
   
@@ -8,7 +11,9 @@ function App() {
     <main>
       <Header />
 
-      <section className="search-section">
+      <SearchForm />
+
+      <section className='movies-section'>
 
       </section>
     </main>
