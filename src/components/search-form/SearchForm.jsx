@@ -51,8 +51,6 @@ export function SearchForm ({ updateMovies }) {
         />
 
       </form>
-
-      <p>{inputs.movieName || ''}</p>
     </section>
   )
 }
