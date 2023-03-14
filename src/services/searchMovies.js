@@ -1,4 +1,4 @@
-import { MOVIES_API_WITH_TOKEN } from '../components/constants/API'
+import { MOVIES_API_WITH_TOKEN } from '../constants/API'
 
 export async function searchMovies ({ movieName }) {
   try {
