@@ -1,4 +1,4 @@
-main .principal-header{
+.principal-header{
     width: 100%;
     padding: 20px 10px;
     
@@ -8,6 +8,6 @@ main .principal-header{
     margin-bottom: 3rem;
 }
 
-main .principal-header h1{
+.principal-header h1{
     font-size: 28px;
 }
