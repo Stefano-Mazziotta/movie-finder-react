@@ -11,8 +11,10 @@ export function SearchForm ({ updateMovies }) {
 
     searchMovies(inputs)
       .then(data => {
-        const movies = data.Search
-        updateMovies(movies)
+        const { Search } = data
+        if (!Search) return []
+
+        updateMovies(Search)
         setIsSubmit(false)
       })
   }, [isSubmit])
