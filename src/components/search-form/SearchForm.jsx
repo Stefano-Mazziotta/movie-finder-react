@@ -38,7 +38,7 @@ export function SearchForm ({ updateMovies }) {
         <input
           className='form-input'
           type='text'
-          placeholder='Movie name'
+          placeholder='Batman, Harry Potter, Avatar...'
           name='movieName'
           value={inputs.movieName || ''}
           onChange={handleChange}

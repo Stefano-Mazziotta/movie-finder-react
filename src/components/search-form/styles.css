@@ -11,16 +11,42 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    gap: 5px;
 }
 
 .search-section form .form-input{
     width: 80%;
     padding: 10px;
-    font-size: 16px;
+    outline: none;
+
+    font-size: 18px;
+    color: #f2f2f2 ;
+
+    border-radius: 3px;
+    border: #333333 2px solid;
+    
+    background: none;
+    transition: all ease .3s;
+}
+.search-section form .form-input:focus{
+    border: #f2f2f2 2px solid;
 }
 
 .search-section form .form-btn{
     width: 20%;
     padding: 10px;
+
     font-size: 21px;
+    background-color:#242424;
+    border: 2px solid #333333;
+
+    cursor: pointer;
+    border-radius: 3px;
+
+    transition: all ease .3s;
+}
+
+.search-section form .form-btn:hover{
+    background-color:  #262626;
+    border: 2px solid #f2f2f2;
 }
