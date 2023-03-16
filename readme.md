@@ -18,8 +18,8 @@ Requirements:
 
 First iteration:
 
-☐ Prevent the same search from being done twice in a row.
+☐ Prevent the same search from being done twice in a row. (investigate)
 
-☐ Make the search happen automatically when typing.
+✅ Make the search happen automatically when typing.
 
 ☐ Prevents searching continuously when typing (debounce)

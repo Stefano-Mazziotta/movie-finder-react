@@ -1,17 +1,13 @@
-import { useState } from 'react'
 import './styles.css'
 
 import { Header } from './components/header/Header'
 import { SearchForm } from './components/search-form/SearchForm'
 import { Movies } from './components/movies/Movies'
 
+import { useMovies } from './hooks/useMovies'
+
 function App () {
-  const [movies, setMovies] = useState([])
-
-  const updateMovies = (newMovies) => {
-    setMovies(newMovies)
-  }
-
+  const { movies, updateMovies } = useMovies()
   return (
     <div className='page'>
       <Header />

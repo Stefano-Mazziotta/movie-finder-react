@@ -1,32 +1,21 @@
-import { useEffect, useState } from 'react'
-import { searchMovies } from '../../services/searchMovies'
+import { useState } from 'react'
+
 import './styles.css'
 
 export function SearchForm ({ updateMovies }) {
   const [inputs, setInputs] = useState({})
-  const [isSubmit, setIsSubmit] = useState(false)
 
-  useEffect(() => {
-    if (!isSubmit) return
+  // update movies when inputs change
+  // useEffect(() => {
+  //   const { movieName } = inputs
+  //   updateMovies(movieName)
+  // }, [inputs])
 
-    searchMovies(inputs)
-      .then(data => {
-        const { Search } = data
-
-        if (!Search) {
-          updateMovies([])
-          setIsSubmit(false)
-          return
-        }
-
-        updateMovies(Search)
-        setIsSubmit(false)
-      })
-  }, [isSubmit])
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
-    setIsSubmit(true)
+
+    const { movieName } = inputs
+    await updateMovies(movieName)
   }
 
   const handleChange = (event) => {
