@@ -1,10 +1,6 @@
-import { useState } from 'react'
-
 import './styles.css'
 
 export function SearchForm ({ updateMovies }) {
-  const [inputs, setInputs] = useState({})
-
   // update movies when inputs change
   // useEffect(() => {
   //   const { movieName } = inputs
@@ -12,19 +8,15 @@ export function SearchForm ({ updateMovies }) {
   // }, [inputs])
 
   const handleSubmit = async (event) => {
+    // form controlled -> inputs as states
+    // this code is a form uncontrolled
     event.preventDefault()
 
-    const { movieName } = inputs
+    const { movieName } = Object.fromEntries(
+      new window.FormData(event.target)
+    )
+
     await updateMovies(movieName)
-  }
-
-  const handleChange = (event) => {
-    const input = event.target
-
-    const name = input.name
-    const value = input.value
-
-    setInputs(values => ({ ...values, [name]: value }))
   }
 
   return (
@@ -36,8 +28,6 @@ export function SearchForm ({ updateMovies }) {
           type='text'
           placeholder='Batman, Harry Potter, Avatar...'
           name='movieName'
-          value={inputs.movieName || ''}
-          onChange={handleChange}
         />
 
         <input
