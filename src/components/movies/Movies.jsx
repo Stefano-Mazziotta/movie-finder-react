@@ -19,12 +19,12 @@ function MoviesResult ({ movies }) {
       {
         movies.map(movie => (
 
-          <ul className='items-wrap' key={movie.imdbID}>
+          <ul className='items-wrap' key={movie.id}>
             <div className='img-container'>
-              <img src={movie.Poster} alt={movie.Title} />
+              <img src={movie.image} alt={movie.title} />
             </div>
-            <li>{movie.Title}</li>
-            <li>{movie.Year}</li>
+            <li>{movie.title}</li>
+            <li>{movie.year}</li>
           </ul>
 
         ))

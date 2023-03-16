@@ -12,7 +12,14 @@ export async function searchMovies ({ newMovieName }) {
     const data = await response.json()
 
     if (!data) return []
-    return data.Search
+
+    const movies = data.Search
+    return movies?.map(movie => ({
+      id: movie.imdbID,
+      title: movie.Title,
+      year: movie.Year,
+      image: movie.Poster
+    }))
   } catch (error) {
     console.log(error)
   }
