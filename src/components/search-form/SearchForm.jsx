@@ -1,22 +1,19 @@
 import './styles.css'
+import { useSearch } from '../../hooks/useSearch'
 
 export function SearchForm ({ updateMovies }) {
-  // update movies when inputs change
-  // useEffect(() => {
-  //   const { movieName } = inputs
-  //   updateMovies(movieName)
-  // }, [inputs])
+  const { search, updateSearch, error } = useSearch()
 
   const handleSubmit = async (event) => {
     // form controlled -> inputs as states
-    // this code is a form uncontrolled
+    // form uncontrolled -> inputs from DOM (event)
     event.preventDefault()
+    await updateMovies(search)
+  }
 
-    const { movieName } = Object.fromEntries(
-      new window.FormData(event.target)
-    )
-
-    await updateMovies(movieName)
+  const handleChange = (event) => {
+    const movieName = event.target.value
+    updateSearch(movieName)
   }
 
   return (
@@ -28,6 +25,12 @@ export function SearchForm ({ updateMovies }) {
           type='text'
           placeholder='Batman, Harry Potter, Avatar...'
           name='movieName'
+          value={search}
+          onChange={handleChange}
+          style={{
+            border: '1px solid transparent',
+            borderColor: error ? 'red' : 'transparent'
+          }}
         />
 
         <input
@@ -37,6 +40,7 @@ export function SearchForm ({ updateMovies }) {
         />
 
       </form>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
     </section>
   )
 }
