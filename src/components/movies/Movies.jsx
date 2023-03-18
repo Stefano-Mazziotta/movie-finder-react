@@ -1,12 +1,19 @@
+import { useRef } from 'react'
 import './styles.css'
 
 export function Movies ({ movies }) {
   const hasMovies = movies?.length > 0
+  const isFirstTime = useRef(true)
+
+  if (hasMovies) isFirstTime.current = false
 
   return (
     <section className='movies-section'>
       {
-        hasMovies ? <MoviesResult movies={movies} /> : <MoviesNotFound />
+        (hasMovies) && <MoviesResult movies={movies} />
+      }
+      {
+        (!hasMovies && !isFirstTime.current) && <MoviesNotFound />
       }
     </section>
   )
