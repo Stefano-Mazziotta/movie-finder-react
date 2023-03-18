@@ -30,8 +30,8 @@ function MoviesResult ({ movies }) {
             <div className='img-container'>
               <img src={movie.image} alt={movie.title} />
             </div>
-            <li>{movie.title}</li>
             <li>{movie.year}</li>
+            <li>{movie.title}</li>
           </ul>
 
         ))
