@@ -1,9 +1,6 @@
 import './styles.css'
-import { useSearch } from '../../hooks/useSearch'
 
-export function SearchForm ({ updateMovies }) {
-  const { search, updateSearch, error } = useSearch()
-
+export function SearchForm ({ updateMovies, search, updateSearch, errorSearch }) {
   const handleSubmit = async (event) => {
     // form controlled -> inputs as states
     // form uncontrolled -> inputs from DOM (event)
@@ -29,7 +26,7 @@ export function SearchForm ({ updateMovies }) {
           onChange={handleChange}
           style={{
             border: '1px solid transparent',
-            borderColor: error ? 'red' : '#333333'
+            borderColor: errorSearch ? 'red' : '#333333'
           }}
         />
 
@@ -37,11 +34,11 @@ export function SearchForm ({ updateMovies }) {
           className='form-btn'
           type='submit'
           value='🔎'
-          disabled={error}
+          disabled={errorSearch}
         />
 
       </form>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {errorSearch && <p style={{ color: 'red' }}>{errorSearch}</p>}
     </section>
   )
 }
