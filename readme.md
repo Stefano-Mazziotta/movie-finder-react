@@ -18,7 +18,7 @@ Requirements:
 
 First iteration:
 
-☐ Prevent the same search from being done twice in a row. (investigate)
+✅ Prevent the same search from being done twice in a row.
 
 ✅ Make the search happen automatically when typing.
 
