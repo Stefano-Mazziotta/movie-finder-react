@@ -29,7 +29,7 @@ export function SearchForm ({ updateMovies }) {
           onChange={handleChange}
           style={{
             border: '1px solid transparent',
-            borderColor: error ? 'red' : 'transparent'
+            borderColor: error ? 'red' : '#333333'
           }}
         />
 
@@ -37,6 +37,7 @@ export function SearchForm ({ updateMovies }) {
           className='form-btn'
           type='submit'
           value='🔎'
+          disabled={error}
         />
 
       </form>
