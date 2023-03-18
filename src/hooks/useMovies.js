@@ -3,13 +3,22 @@ import { searchMovies } from '../services/searchMovies'
 
 export function useMovies () {
   const [movies, setMovies] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
   const updateMovies = async (newMovieName) => {
-    if (newMovieName === '') return
+    try {
+      if (newMovieName === '') return
 
-    const newMovies = await searchMovies({ newMovieName })
-    setMovies(newMovies)
+      setIsLoading(true)
+
+      const newMovies = await searchMovies({ newMovieName })
+      setMovies(newMovies)
+    } catch (error) {
+      throw new Error('error when try update movies')
+    } finally {
+      setIsLoading(false)
+    }
   }
 
-  return { movies, updateMovies }
+  return { movies, isLoading, updateMovies }
 }
