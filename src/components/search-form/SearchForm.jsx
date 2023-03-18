@@ -5,7 +5,7 @@ export function SearchForm ({ updateMovies, search, updateSearch, errorSearch })
     // form controlled -> inputs as states
     // form uncontrolled -> inputs from DOM (event)
     event.preventDefault()
-    await updateMovies(search)
+    await updateMovies({ search })
   }
 
   const handleChange = (event) => {

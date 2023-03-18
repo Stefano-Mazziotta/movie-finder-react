@@ -10,7 +10,7 @@ import { useSearch } from './hooks/useSearch'
 
 function App () {
   const { search, updateSearch, errorSearch } = useSearch()
-  const { movies, updateMovies, isLoading } = useMovies()
+  const { movies, updateMovies, isLoading } = useMovies({ search })
 
   return (
     <div className='page'>
