@@ -2,8 +2,6 @@ import { MOVIES_API_WITH_TOKEN } from '../constants/API'
 
 export async function searchMovies ({ newMovieName }) {
   try {
-    if (!newMovieName) return []
-
     const serverQuery = `${MOVIES_API_WITH_TOKEN}&s=${newMovieName}`
 
     const response = await fetch(serverQuery)
@@ -21,6 +19,6 @@ export async function searchMovies ({ newMovieName }) {
       image: movie.Poster
     }))
   } catch (error) {
-    console.log(error)
+    throw new Error('error fetching movies')
   }
 }
