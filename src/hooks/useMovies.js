@@ -5,6 +5,8 @@ export function useMovies () {
   const [movies, setMovies] = useState([])
 
   const updateMovies = async (newMovieName) => {
+    if (newMovieName === '') return
+
     const newMovies = await searchMovies({ newMovieName })
     setMovies(newMovies)
   }
