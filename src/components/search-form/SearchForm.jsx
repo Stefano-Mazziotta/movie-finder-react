@@ -1,16 +1,26 @@
 import './styles.css'
+import debounce from 'just-debounce-it'
+import { useCallback } from 'react'
 
 export function SearchForm ({ updateMovies, search, updateSearch, errorSearch, sort, updateSort }) {
-  const handleSubmit = async (event) => {
+  const debouncedUpdateMovies = useCallback(
+    debounce(newMovieName => {
+      console.log('search', newMovieName)
+      updateMovies({ newMovieName })
+    }, 300)
+    , [updateMovies])
+
+  const handleSubmit = (event) => {
     // form controlled -> inputs as states
     // form uncontrolled -> inputs from DOM (event)
     event.preventDefault()
-    await updateMovies({ search })
+    updateMovies({ newMovieName: search })
   }
 
   const handleChange = (event) => {
-    const movieName = event.target.value
-    updateSearch(movieName)
+    const newMovieName = event.target.value
+    updateSearch({ newMovieName })
+    debouncedUpdateMovies(newMovieName)
   }
 
   const handleSort = () => {

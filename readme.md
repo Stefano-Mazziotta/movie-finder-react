@@ -22,4 +22,4 @@ First iteration:
 
 ✅ Make the search happen automatically when typing.
 
-☐ Prevents searching continuously when typing (debounce)
+✅ Prevents searching continuously when typing (debounce)

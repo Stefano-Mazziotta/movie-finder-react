@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 import { searchMovies } from '../services/searchMovies'
 
 export function useMovies ({ search, sort }) {
@@ -6,20 +6,20 @@ export function useMovies ({ search, sort }) {
   const [isLoading, setIsLoading] = useState(false)
   const previousSearch = useRef(search)
 
-  const updateMovies = async ({ search }) => {
+  const updateMovies = useCallback(async ({ newMovieName }) => {
     try {
-      if (search === '' || search === previousSearch.current) return
+      if (newMovieName === '' || newMovieName === previousSearch.current) return
 
       setIsLoading(true)
-      previousSearch.current = search
-      const newMovies = await searchMovies({ search })
+      previousSearch.current = newMovieName
+      const newMovies = await searchMovies({ newMovieName })
       setMovies(newMovies)
     } catch (error) {
       throw new Error('error when try update movies')
     } finally {
       setIsLoading(false)
     }
-  }
+  }, [])
 
   // se realiza el calculo si cambia el valor movies y/o sort
   const sortedMovies = useMemo(() => {

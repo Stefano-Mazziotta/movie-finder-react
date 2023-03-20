@@ -1,8 +1,8 @@
 import { MOVIES_API_WITH_TOKEN } from '../constants/API'
 
-export async function searchMovies ({ search }) {
+export async function searchMovies ({ newMovieName }) {
   try {
-    const serverQuery = `${MOVIES_API_WITH_TOKEN}&s=${search}`
+    const serverQuery = `${MOVIES_API_WITH_TOKEN}&s=${newMovieName}`
 
     const response = await fetch(serverQuery)
     if (!response.ok) throw new Error('error fetching search movies')

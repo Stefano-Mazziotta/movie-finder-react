@@ -5,8 +5,8 @@ export function useSearch () {
   const [errorSearch, setErrorSearch] = useState(null)
   const isFirstInput = useRef(true)
 
-  const updateSearch = (movieName) => {
-    setSearch(movieName)
+  const updateSearch = ({ newMovieName }) => {
+    setSearch(newMovieName)
   }
 
   useEffect(() => {
