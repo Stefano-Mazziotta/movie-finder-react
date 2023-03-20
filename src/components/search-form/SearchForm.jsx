@@ -1,6 +1,6 @@
 import './styles.css'
 
-export function SearchForm ({ updateMovies, search, updateSearch, errorSearch }) {
+export function SearchForm ({ updateMovies, search, updateSearch, errorSearch, sort, updateSort }) {
   const handleSubmit = async (event) => {
     // form controlled -> inputs as states
     // form uncontrolled -> inputs from DOM (event)
@@ -11,6 +11,10 @@ export function SearchForm ({ updateMovies, search, updateSearch, errorSearch })
   const handleChange = (event) => {
     const movieName = event.target.value
     updateSearch(movieName)
+  }
+
+  const handleSort = () => {
+    updateSort(!sort)
   }
 
   return (
@@ -39,6 +43,10 @@ export function SearchForm ({ updateMovies, search, updateSearch, errorSearch })
 
       </form>
       {errorSearch && <p style={{ color: 'red' }}>{errorSearch}</p>}
+      <div className='checkbox-wrap'>
+        <label>Sort alphabetically movies</label>
+        <input type='checkbox' name='sortMovies' value={sort} onChange={handleSort} />
+      </div>
     </section>
   )
 }

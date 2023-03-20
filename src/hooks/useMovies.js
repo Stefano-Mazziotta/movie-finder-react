@@ -1,7 +1,7 @@
-import { useRef, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { searchMovies } from '../services/searchMovies'
 
-export function useMovies ({ search }) {
+export function useMovies ({ search, sort }) {
   const [movies, setMovies] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const previousSearch = useRef(search)
@@ -21,5 +21,12 @@ export function useMovies ({ search }) {
     }
   }
 
-  return { movies, isLoading, updateMovies }
+  // se realiza el calculo si cambia el valor movies y/o sort
+  const sortedMovies = useMemo(() => {
+    return sort
+      ? [...movies].sort((a, b) => a.title.localeCompare(b.title))
+      : movies
+  }, [movies, sort])
+
+  return { movies: sortedMovies, isLoading, updateMovies }
 }
